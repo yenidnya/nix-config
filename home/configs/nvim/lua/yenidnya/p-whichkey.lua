@@ -6,6 +6,13 @@ map.set({ "v", "n" }, "L", "$")
 map.set("v", "J", ":m '>+1<CR>gv=gv")
 map.set("v", "K", ":m '<-2<CR>gv=gv")
 
+function prequire(...)
+    local status, lib = pcall(require, ...)
+    if(status) then return lib end
+    --Library failed to load, so perhaps return `nil` or something?
+    return nil
+end
+
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
@@ -21,7 +28,7 @@ return {
 
 		local tscope_builtin = require("telescope.builtin")
 		local tscope = require("telescope")
-		local amzn_brazil = require("amzn-brazil")
+		local amzn_brazil = prequire("amzn-brazil")
 
 		-- Code Actions
 		wk.register({
@@ -38,7 +45,7 @@ return {
 				a = { vim.lsp.buf.code_action, "Actions", mode = { "n", "v" } },
 				f = "Format", -- formatting is defined in p-formatter
 				n = { vim.lsp.buf.rename, "Rename" },
-				c = { amzn_brazil.get_remote_code_url, "Copy remote URL" },
+				c = { amzn_brazil and amzn_brazil.get_remote_code_url, "Copy remote URL" },
 			},
 			e = { ":lua vim.diagnostic.open_float()<cr>", "Show Error" },
 		}, wk_opts)

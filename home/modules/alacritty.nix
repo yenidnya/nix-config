@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{...}: {
   programs.alacritty = {
     enable = true;
 
@@ -15,12 +13,30 @@
         draw_bold_text_with_bright_colors = true;
 
         indexed_colors = [
-          { index = 16; color = "0xdc9656"; }
-          { index = 17; color = "0xa16946"; }
-          { index = 18; color = "0x282828"; }
-          { index = 19; color = "0x383838"; }
-          { index = 20; color = "0xb8b8b8"; }
-          { index = 21; color = "0xe8e8e8"; }
+          {
+            index = 16;
+            color = "0xdc9656";
+          }
+          {
+            index = 17;
+            color = "0xa16946";
+          }
+          {
+            index = 18;
+            color = "0x282828";
+          }
+          {
+            index = 19;
+            color = "0x383838";
+          }
+          {
+            index = 20;
+            color = "0xb8b8b8";
+          }
+          {
+            index = 21;
+            color = "0xe8e8e8";
+          }
         ];
 
         primary = {

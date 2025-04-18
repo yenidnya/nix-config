@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     shortcut = "a";
@@ -86,5 +84,3 @@
     '';
   };
 }
-
-

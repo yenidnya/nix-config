@@ -1,22 +1,24 @@
-{ config, pkgs, lib, ... }:
-
-let 
-  tmux-spotify = import ./modules/tmux-spotify.nix {inherit pkgs;};
-in 
 {
-
+  config,
+  pkgs,
+  ...
+}: let
+  tmux-spotify = import ./modules/tmux-spotify.nix {inherit pkgs;};
+in {
   imports = [
     ./modules/zsh.nix
     ./modules/tmux.nix
     ./modules/alacritty.nix
   ];
 
-  nixpkgs.config.allowUnfree =true;
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # Users
   home.username = "yenidnya";
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/yenidnya" else "/home/yenidnya";
+  home.homeDirectory =
+    if pkgs.stdenv.isDarwin
+    then "/Users/yenidnya"
+    else "/home/yenidnya";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -33,15 +35,15 @@ in
     neovim
     xclip
     openssh
-    gcc
     discord
     btop
     nodejs
     rustup
     spotify
     playerctl
-    busybox
     neofetch
+    toybox
+    ripgrep
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -49,8 +51,8 @@ in
   home.file = {
     "${config.home.homeDirectory}/.config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/configs/nvim";
     "${config.home.homeDirectory}/.config/bin/tmux-spotify" = {
-        text = tmux-spotify.tmux-spotify;
-        executable = true;
+      text = tmux-spotify.tmux-spotify;
+      executable = true;
     };
   };
 
@@ -59,11 +61,11 @@ in
   };
 
   programs.git = {
-      enable = true;
-      userName = "Batuhan Yenidunya";
-      userEmail = "batuhanyndny@gmail.com";
+    enable = true;
+    userName = "Batuhan Yenidunya";
+    userEmail = "batuhanyndny@gmail.com";
   };
-  programs.ssh.enable = true; 
+  programs.ssh.enable = true;
   services.ssh-agent.enable = true;
 
   # Let Home Manager install and manage itself.

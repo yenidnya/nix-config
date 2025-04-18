@@ -1,6 +1,8 @@
-{config, pkgs, ...}:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   cfgHome = config.home.homeDirectory;
   xdgConfigHome = "${cfgHome}/.config";
 in {
@@ -12,7 +14,7 @@ in {
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "git" 
+        "git"
       ];
     };
 
@@ -37,7 +39,7 @@ in {
 
       # Source p10k
       source ~/.p10k.zsh
-      
+
       # readline mode
       set -o vi
     '';
@@ -52,7 +54,7 @@ in {
     enable = true;
     enableZshIntegration = true;
   };
-  
+
   programs.lazygit.enable = true;
 
   home.packages = with pkgs; [

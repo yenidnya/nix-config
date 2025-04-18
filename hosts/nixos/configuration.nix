@@ -1,10 +1,8 @@
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{pkgs, ...}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,7 +63,7 @@
   users.users.yenidnya = {
     isNormalUser = true;
     description = "Batuhan";
-    extraGroups = [ "networkmanager" "wheel" "openrazer" ];
+    extraGroups = ["networkmanager" "wheel" "openrazer"];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -73,16 +71,14 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
   # Razer
   hardware.openrazer.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim 
+    neovim
     wget
     openrazer-daemon
   ];
@@ -109,5 +105,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

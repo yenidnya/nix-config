@@ -31,6 +31,24 @@ return {
 
 			local rust_commands = require("rust-commands")
 
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"rust_analyzer",
+					"eslint_d",
+					"json-lsp",
+					"lua-language-server",
+					"mdformat",
+					"prettierd",
+					"python-lsp-server",
+					"rust-analyzer",
+					"shfmt",
+					"stylua",
+					"ts_ls",
+					"typos_lsp",
+					"zls",
+				},
+			})
+
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
 					require("lspconfig")[server_name].setup(lsp_config)

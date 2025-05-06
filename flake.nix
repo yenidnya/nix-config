@@ -17,17 +17,17 @@
           {
             home-manager.useUserPackages = true;
             home-manager.useGlobalPkgs = true;
-            home-manager.users.yenidnya = import ./home/home.nix;
+            home-manager.users.yenidnya = import ./home/home-linux.nix;
           }
         ];
       };
     };
 
     homeConfigurations = {
-      "yenidnya@macbook" = home-manager.lib.homeManagerConfiguration {
+      "yenidnya@macos" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
-          ./home/home.nix
+          ./home/home-darwin.nix
         ];
       };
     };

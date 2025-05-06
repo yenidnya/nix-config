@@ -4,6 +4,7 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
+			require("mason-install").ensure_formatters_installed()
 		end,
 	},
 	{
@@ -34,14 +35,9 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"rust_analyzer",
-					"eslint_d",
 					"jsonls",
 					"lua_ls",
-					"mdformat",
-					"prettierd",
 					"pylsp",
-					"shfmt",
-					"stylua",
 					"ts_ls",
 					"typos_lsp",
 					"zls",

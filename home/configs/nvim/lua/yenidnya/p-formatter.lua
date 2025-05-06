@@ -26,7 +26,7 @@ return {
 			toml = { "taplo" },
 			markdown = { "mdformat" },
 			sh = { "shfmt" },
-            nix = {"alejandra"}
+			nix = { "alejandra" },
 		},
 		-- Customize formatters
 		formatters = {

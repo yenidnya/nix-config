@@ -14,8 +14,6 @@ nix = {
   settings.experimental-features = ["nix-command" "flakes"];
 };
 
-
-
   home.username = "yenidnya";
   home.stateVersion = "24.11";
 
@@ -40,6 +38,7 @@ nix = {
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
   };
 
   programs.git = {

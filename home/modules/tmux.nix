@@ -18,6 +18,7 @@
     ];
 
     extraConfig = ''
+      set -g default-command "$SHELL"
       setw -g pane-base-index 1
       set -g allow-rename on
       set -g renumber-windows on
@@ -46,7 +47,7 @@
       # Key bindings
       bind C-a send-prefix
       unbind r
-      bind r source-file ~/.config/tmux/tmux.conf\\; display-message 'tmux.conf reloaded'
+      bind r source-file ~/.config/tmux/tmux.conf\; display-message 'tmux.conf reloaded'
       bind C-p previous-window
       bind C-n next-window
 
@@ -76,7 +77,7 @@
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
-      bind y run -b "tmux show-buffer | xclip -selection clipboard"\\; display-message "copied tmux buffer to system clipboard"
+      bind y run -b "tmux show-buffer | xclip -selection clipboard"\; display-message "copied tmux buffer to system clipboard"
 
       # tmux-resurrect config
       set -g @resurrect-save 'S'

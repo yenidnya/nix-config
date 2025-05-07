@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./home-common.nix
   ];
@@ -15,6 +13,6 @@
   ];
 
   home.file = {};
-  
+
   services.ssh-agent.enable = true;
 }

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   tmux-spotify = import ./modules/tmux-spotify.nix {inherit pkgs;};
 in {
   imports = [
@@ -9,10 +11,10 @@ in {
     ./modules/alacritty.nix
   ];
 
-nix = {
-  package = pkgs.nix;
-  settings.experimental-features = ["nix-command" "flakes"];
-};
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = ["nix-command" "flakes"];
+  };
 
   home.username = "yenidnya";
   home.stateVersion = "24.11";
@@ -46,7 +48,7 @@ nix = {
     userName = "Batuhan Yenidunya";
     userEmail = "batuhanyndny@gmail.com";
   };
-  
+
   programs.ssh.enable = true;
   programs.home-manager.enable = true;
 }

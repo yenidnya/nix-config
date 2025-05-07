@@ -30,6 +30,9 @@ return {
 		},
 		-- Customize formatters
 		formatters = {
+			alejandra = {
+				command = "alejandra",
+			},
 			prettierd = {
 				env = { PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/.prettierrc") },
 			},

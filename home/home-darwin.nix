@@ -9,7 +9,7 @@
 
   # macOS-specific packages
   home.packages = with pkgs; [];
-  
+
   # macOS-specific file configurations
   home.file = {};
 }

@@ -36,6 +36,7 @@ in {
 
       # Add binaries to PATH
       export PATH="$PATH:${xdgConfigHome}/bin"
+      export PATH="$PATH:${config.home.homeDirectory}/alejandra/target/release"
 
       # Source p10k
       source ~/.p10k.zsh
@@ -47,6 +48,9 @@ in {
 
   programs.zoxide = {
     enable = true;
+    options = [
+      "--cmd cd"
+    ];
     enableZshIntegration = true;
   };
 

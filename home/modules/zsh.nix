@@ -36,7 +36,8 @@ in {
 
       # Add binaries to PATH
       export PATH="$PATH:${xdgConfigHome}/bin"
-      export PATH="$PATH:${config.home.homeDirectory}/alejandra/target/release"
+      export PATH="$PATH:${cfgHome}/.cargo/bin"
+      export PATH="$PATH:${cfgHome}/alejandra/target/release"
 
       # Source p10k
       source ~/.p10k.zsh

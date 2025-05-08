@@ -28,6 +28,8 @@ in {
     rustup
     neofetch
     ripgrep
+    lldb_19
+    binaryen
   ];
 
   home.file = {

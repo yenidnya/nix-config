@@ -5,11 +5,12 @@
 }: let
   cfgHome = config.home.homeDirectory;
   xdgConfigHome = "${cfgHome}/.config";
+  xdgCacheHome = "${cfgHome}/.cache";
 in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
+    autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
@@ -24,6 +25,9 @@ in {
     };
 
     initExtra = ''
+      if [[ -r "''${XDG_CACHE_HOME:-${xdgCacheHome}}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-${xdgCacheHome}}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
       export LUA_CPATH=";?.dylib"

@@ -10,15 +10,21 @@
     escapeTime = 0;
     aggressiveResize = true;
     keyMode = "vi";
+    shell = "${pkgs.zsh}/bin/zsh";
 
     plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-save 'S'
+          set -g @resurrect-restore 'R'
+        '';
+      }
       sensible
-      resurrect
-      vim-tmux-navigator
+      #vim-tmux-navigator
     ];
 
     extraConfig = ''
-      set -g default-command "$SHELL"
       setw -g pane-base-index 1
       set -g allow-rename on
       set -g renumber-windows on
@@ -45,7 +51,6 @@
       set-option -g status-interval 5
 
       # Key bindings
-      bind C-a send-prefix
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf\; display-message 'tmux.conf reloaded'
       bind C-p previous-window
@@ -80,8 +85,6 @@
       bind y run -b "tmux show-buffer | xclip -selection clipboard"\; display-message "copied tmux buffer to system clipboard"
 
       # tmux-resurrect config
-      set -g @resurrect-save 'S'
-      set -g @resurrect-restore 'R'
     '';
   };
 }

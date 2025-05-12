@@ -3,7 +3,7 @@
     enable = true;
     shortcut = "a";
     baseIndex = 1;
-    clock24 = false;
+    clock24 = true;
     mouse = true;
     terminal = "alacritty";
     historyLimit = 10000;

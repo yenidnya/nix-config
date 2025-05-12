@@ -4,6 +4,8 @@
   ...
 }: let
   tmux-spotify = import ./modules/tmux-spotify.nix {inherit pkgs;};
+  xdgConfigHome = "${config.home.homeDirectory}/.config";
+  nixConfig = "${config.home.homeDirectory}/nix-config";
 in {
   imports = [
     ./modules/zsh.nix
@@ -33,11 +35,12 @@ in {
   ];
 
   home.file = {
-    "${config.home.homeDirectory}/.config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/configs/nvim";
-    "${config.home.homeDirectory}/.config/bin/tmux-spotify" = {
+    "${xdgConfigHome}/nvim".source = config.lib.file.mkOutOfStoreSymlink "${nixConfig}/home/configs/nvim";
+    "${xdgConfigHome}/bin/tmux-spotify" = {
       text = tmux-spotify.tmux-spotify;
       executable = true;
     };
+    "${xdgConfigHome}/.taplo.toml".source = ./configs/taplo.toml;
   };
 
   home.sessionVariables = {

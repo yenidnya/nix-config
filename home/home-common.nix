@@ -32,6 +32,8 @@ in {
     ripgrep
     lldb_19
     binaryen
+    luajitPackages.luacheck
+    tree
   ];
 
   home.file = {

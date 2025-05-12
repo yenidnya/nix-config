@@ -6,6 +6,7 @@ in {
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    historySubstringSearch.enable = true;
 
     shellAliases = {
       lg = "lazygit";

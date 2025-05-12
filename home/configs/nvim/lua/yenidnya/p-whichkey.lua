@@ -7,10 +7,12 @@ map.set("v", "J", ":m '>+1<CR>gv=gv")
 map.set("v", "K", ":m '<-2<CR>gv=gv")
 
 function prequire(...)
-    local status, lib = pcall(require, ...)
-    if(status) then return lib end
-    --Library failed to load, so perhaps return `nil` or something?
-    return nil
+	local status, lib = pcall(require, ...)
+	if status then
+		return lib
+	end
+	--Library failed to load, so perhaps return `nil` or something?
+	return nil
 end
 
 return {
@@ -46,6 +48,7 @@ return {
 				f = "Format", -- formatting is defined in p-formatter
 				n = { vim.lsp.buf.rename, "Rename" },
 				c = { amzn_brazil and amzn_brazil.get_remote_code_url, "Copy remote URL" },
+				l = { require("lint").try_lint(), "Lint" },
 			},
 			e = { ":lua vim.diagnostic.open_float()<cr>", "Show Error" },
 		}, wk_opts)

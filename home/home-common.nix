@@ -43,6 +43,7 @@ in {
       executable = true;
     };
     "${xdgConfigHome}/.taplo.toml".source = ./configs/taplo.toml;
+    "${xdgConfigHome}/starship.toml".source = ./configs/starship.toml;
   };
 
   home.sessionVariables = {

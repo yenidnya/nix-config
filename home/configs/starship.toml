@@ -1,0 +1,46 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Global settings
+add_newline = false
+format = """
+$directory \
+$git_branch\
+${custom.git_status} \
+$git_state\
+$character
+"""
+right_format = "$cmd_duration $time"
+
+# Directory configuration
+[directory]
+style = "blue"
+truncation_length = 3
+truncate_to_repo = false
+format = "[$path]($style)"
+
+[character]
+success_symbol = "[⟩](purple)"
+error_symbol = "[⟩](red)"
+vimcmd_symbol = "[⟨](blue)"
+
+[time]
+disabled = false
+style = "dimmed white"
+format = "[$time]($style)"
+time_format = "%H:%M:%S"
+
+[cmd_duration]
+min_time = 1
+format = "[$duration](dimmed white)"
+
+[git_branch]
+style = "dimmed white"
+format = "[$branch]($style)"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style)'
+
+[custom.git_status]
+when = """ [[ $(git status -s) != '' ]] """
+format = "[*](dimmed white)"

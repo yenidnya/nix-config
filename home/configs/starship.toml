@@ -6,7 +6,7 @@ add_newline = false
 format = """
 $directory \
 $git_branch\
-${custom.git_status} \
+${custom.git_status}$git_status \
 $git_state\
 $character
 """
@@ -31,7 +31,7 @@ format = "[$time]($style)"
 time_format = "%H:%M:%S"
 
 [cmd_duration]
-min_time = 1
+min_time = 0
 format = "[$duration](dimmed white)"
 
 [git_branch]
@@ -40,6 +40,20 @@ format = "[$branch]($style)"
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style)'
+
+[git_status]
+format = "( [$ahead_behind](dimmed yellow))"
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+conflicted = ''
+up_to_date = ''
+untracked = ''
+stashed = ''
+modified = ''
+staged = ''
+renamed = ''
+deleted = ''
 
 [custom.git_status]
 when = """ [[ $(git status -s) != '' ]] """

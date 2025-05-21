@@ -25,6 +25,7 @@
     ];
 
     extraConfig = ''
+      set -g default-command "$SHELL"
       setw -g pane-base-index 1
       set -g allow-rename on
       set -g renumber-windows on

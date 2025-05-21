@@ -34,6 +34,24 @@ in {
     binaryen
     luajitPackages.luacheck
     tree
+    bat
+    mitmproxy
+    cmake
+    openssl
+    curl
+    libjpeg
+    SDL2
+    SDL2_ttf
+    SDL2_image
+    SDL2_mixer
+    pkg-config
+    a52dec
+    gettext
+    ninja
+    libpng
+    zlib
+    glib
+    libffi
   ];
 
   home.file = {

@@ -44,22 +44,6 @@ return {
 
 			local rust_commands = require("rust-commands")
 			vim.lsp.config("rust_analyzer", {
-				settings = {
-					["rust-analyzer"] = {
-						["server.extraEnv"] = {
-							-- Use custom target dir for rust-analyzer to prevent collisions with brazil-build
-							CARGO_TARGET_DIR = ".rust-analyzer/target",
-						},
-						checkOnSave = {
-							allTargets = true,
-						},
-						cargo = {
-							target = "aarch64-apple-darwin",
-							targetDir = "target/rust-analyzer-dir",
-						},
-						["check.features"] = { "use_ignx_local", "allow_no_js_vm" },
-					},
-				},
 				commands = {
 					ExpandMacro = { rust_commands.expand_macro },
 				},
